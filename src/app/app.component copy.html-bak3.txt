@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>第一行Toolbar</span>
+    <span class="toolbar-seprator"></span>
+    <mat-icon>favorite</mat-icon>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    第二行Toolbar
+    <span class="toolbar-seprator"></span>
+    <mat-icon>delete</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
