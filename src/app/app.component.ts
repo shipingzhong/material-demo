@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatRipple } from '@angular/material/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { MatDrawerToggleResult, MatSidenav } from '@angular/material/sidenav';
@@ -10,6 +11,8 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  isLinear: boolean;
+  basicFormGroup: FormGroup;
   title = 'app';
   // formatAlignGroup: any;
   // buttonToggleBold: any;
@@ -37,6 +40,10 @@ export class AppComponent implements OnInit {
     console.log('constructor');
 
     this.matIconRegistry.registerFontClassAlias('fontawesome', 'fa');
+
+    this.basicFormGroup = new FormGroup({
+      name: new FormControl('', Validators.required),
+    });
   }
 
   ngOnInit() {
