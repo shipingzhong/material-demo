@@ -1,355 +1,64 @@
-
-<mat-nav-list>
-  <h3 matSubheader>示範用頁面</h3>
-  <a [routerLink]="['/', 'dashboard', 'survey']" mat-list-item>問卷調查</a>
-  <a [routerLink]="['/', 'dashboard', 'blog']" mat-list-item>部落格</a>
-  <a [routerLink]="['/', 'dashboard', 'inbox']" mat-list-item>收件夾</a>
-  <mat-divider></mat-divider>
-  <!-- 另外一組選單 -->
-  <h3 matSubheader>其他頁面</h3>
-  <a [routerLink]="['/']" mat-list-item>首頁</a>
-  <a [routerLink]="['/']" mat-list-item>Google</a>
-  <a [routerLink]="['/']" mat-list-item>Facebook</a>
-</mat-nav-list>
-<mat-nav-list>
-  <h3 matSubheader>多行文字示範</h3>
-  <mat-list-item>
-    <p matLine>床前明月光</p>
-    <p matLine>疑是地上霜</p>
-  </mat-list-item>
-  <mat-list-item>
-    <p matLine>參加ＩＴ鐵人賽</p>
-    <p matLine>功力增加一甲子</p>
-  </mat-list-item>
-</mat-nav-list>
-
-<mat-nav-list>
-  <h3 matSubheader>好友訊息</h3>
-  <mat-list-item>
-    <img matListAvatar src="https://upload.wikimedia.org/wikipedia/commons/c/c0/Lin_Chi-Ling_%28cropped%29.jpg" />
-    <p matLine>志玲</p>
-    <p matLine>hi，好久不見，最近好嗎？</p>
-    <!-- button會自動被推到最後面 -->
-    <button mat-icon-button>
-      <mat-icon>chat</mat-icon>
-    </button>
-  </mat-list-item>
-  <mat-list-item>
-    <!-- 即使icon button放在前面，還是會被往後推 -->
-    <button mat-icon-button>
-      <mat-icon>chat</mat-icon>
-    </button>
-    <img matListAvatar src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/2008TIBE_Day4_Hall1_Cit%C3%A9Group_TheyKissAgain_SigningEvent_Ariel_Yi-cheng_Lin.jpg/440px-2008TIBE_Day4_Hall1_Cit%C3%A9Group_TheyKissAgain_SigningEvent_Ariel_Yi-cheng_Lin.jpg"
-    />
-    <p matLine>依晨</p>
-    <p matLine>找時間吃個飯吧？</p>
-  </mat-list-item>
-
-
-</mat-nav-list>
-
-
-<mat-toolbar class="demo-app-header">
-  <span>IT鐵人賽－Angular Material Demo</span>
-</mat-toolbar>
-<mat-sidenav-container class="demo-app-container">
-  <mat-sidenav
-    #sideNav
-    (opened)="opened()"
-    (closed)="closed()"
-    mode="side"
-    fixedTopGap="5"
-    fixedBottomGap="20"
-    class="demo-app-sidenav"
-  >
-    我是左邊選單
-  </mat-sidenav>
-
-  <mat-sidenav-content>
+<form [formGroup]="surveyForm">
+  <div formGroupName="basicQuestions">
     <div>
-      <button mat-raised-button color="warn" (click)="toggleSideNav(sideNav)">
-        切換選單狀態
-      </button>
-
-      <mat-drawer-container
-        style="height: 100px; margin: 10px; border: 1px solid black"
-      >
-        <mat-drawer mode="side" opened="true">Drawer Side</mat-drawer>
-        <mat-drawer-content>Content</mat-drawer-content>
-      </mat-drawer-container>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
-
-<button>Hello World！</button>
-<button mat-button>Hello World！</button>
-<button mat-raised-button color="primary">Hello World！</button>
-<mat-icon>person</mat-icon>
-<div>
-  這是一般的ICON顏色
-  <mat-icon>person</mat-icon>
-  <mat-icon fontIcon="person"></mat-icon>
-</div>
-
-<div>
-  這是加上primary顏色的ICON
-  <mat-icon color="primary">thumb_up</mat-icon>
-</div>
-
-<div>
-  這是加上accent顏色的ICON
-  <mat-icon color="accent">info</mat-icon>
-</div>
-
-<div>
-  這是加上warn顏色的ICON
-  <mat-icon color="warn">warning</mat-icon>
-</div>
-
-<h2>自行註冊SVG icon</h2>
-
-<div>
-  <mat-icon svgIcon="custom-svg:angular"></mat-icon>
-  <mat-icon svgIcon="custom-svg:angular" color="primary"></mat-icon>
-  <mat-icon svgIcon="custom-svg:angular" color="accent"></mat-icon>
-  <mat-icon svgIcon="custom-svg:angular" color="warn"></mat-icon>
-</div>
-
-<h2>在MatIcon中使用FontAwesome</h2>
-
-<div>
-  <!-- 就是<i class="fa fa-thumbs-up">的概念 -->
-  <mat-icon fontSet="fontawesome" fontIcon="fa-thumbs-up"></mat-icon>
-  <mat-icon
-    fontSet="fontawesome"
-    fontIcon="fa-thumbs-up"
-    color="primary"
-  ></mat-icon>
-  <mat-icon
-    fontSet="fontawesome"
-    fontIcon="fa-thumbs-up"
-    color="accent"
-  ></mat-icon>
-  <mat-icon
-    fontSet="fontawesome"
-    fontIcon="fa-thumbs-up"
-    color="warn"
-    class="fa-spin"
-  ></mat-icon>
-</div>
-
-<button mat-button>我是按鈕</button>
-
-<button mat-button>我是按鈕</button>
-<button mat-button color="primary">Primary</button>
-<button mat-button color="accent">Accent</button>
-<button mat-button color="warn">Warn</button>
-<button mat-button disabled>Disabled</button>
-<a mat-button>Link</a>
-<!-- 放在a tag裡面也沒問題 -->
-
-<button mat-raised-button>我是raised按鈕</button>
-<button mat-raised-button color="primary">Primary</button>
-<button mat-raised-button color="accent">Accent</button>
-<button mat-raised-button color="warn">Warn</button>
-<button mat-raised-button disabled>Disabled</button>
-<a mat-button>Link</a>
-
-<button mat-raised-button color="primary">
-  <mat-icon>thumb_up</mat-icon> 我有Icon raised-button
-</button>
-<button mat-raised-button color="primary"><mat-icon>thumb_up</mat-icon></button>
-<button mat-icon-button color="primary"><mat-icon>thumb_up</mat-icon></button>
-
-<br /><br /><br />
-<button mat-raised-button mat-icon-button color="primary">
-  <mat-icon>thumb_up</mat-icon>
-</button>
-<button mat-fab>
-  <mat-icon>thumb_up</mat-icon>
-</button>
-<br /><br /><br />
-
-<br /><br /><br />
-
-<button mat-fab color="primary">
-  <mat-icon>thumb_up</mat-icon>
-</button>
-<button mat-fab color="accent">
-  <mat-icon>thumb_up</mat-icon>
-</button>
-<button mat-fab color="warn">
-  <mat-icon>thumb_up</mat-icon>
-</button>
-<button mat-fab disabled>
-  <mat-icon>thumb_up</mat-icon>
-</button>
-
-<br /><br /><br />
-aaa
-<button mat-raised-button mat-icon-button color="primary">
-  <mat-icon>thumb_up</mat-icon>
-</button>
-bbb
-<button mat-mini-fab>
-  <mat-icon>thumb_up</mat-icon>
-</button>
-cccc
-<button mat-mini-fab color="primary">
-  <mat-icon>thumb_up</mat-icon>
-</button>
-<button mat-mini-fab color="accent">
-  <mat-icon>thumb_up</mat-icon>
-</button>
-<button mat-mini-fab color="warn">
-  <mat-icon>thumb_up</mat-icon>
-</button>
-<button mat-mini-fab disabled>
-  <mat-icon>thumb_up</mat-icon>
-</button>
-
-<mat-button-toggle>我是個開關</mat-button-toggle>
-
-<mat-button-toggle-group #formatAlignGroup="matButtonToggleGroup">
-  <!-- button toogle所代表的值 -->
-  <mat-button-toggle value="left">
-    <mat-icon>format_align_left</mat-icon>
-  </mat-button-toggle>
-  <!-- 預設被選取 -->
-  <mat-button-toggle value="center" checked="true">
-    <mat-icon>format_align_center</mat-icon>
-  </mat-button-toggle>
-  <mat-button-toggle value="right">
-    <mat-icon>format_align_right</mat-icon>
-  </mat-button-toggle>
-  <!-- 不允許選擇的button toggle -->
-  <mat-button-toggle value="justify" disabled>
-    <mat-icon>format_align_justify</mat-icon>
-  </mat-button-toggle>
-</mat-button-toggle-group>
-<div>對齊方式為：{{ formatAlignGroup.value }}</div>
-
-<!-- 加上multiple，則裡面的mat-buttong-toggle可以複選 -->
-<!-- 加上vertical="true", 改變排列方式 -->
-<mat-button-toggle-group multiple vertical="true">
-  <mat-button-toggle value="bold" #buttonToggleBold>
-    <mat-icon>format_bold</mat-icon>
-  </mat-button-toggle>
-  <mat-button-toggle value="italic" checked="true" #buttonToggleItalic>
-    <mat-icon>format_italic</mat-icon>
-  </mat-button-toggle>
-  <mat-button-toggle value="underlined" checked="true" #buttonToggleUnderlined>
-    <mat-icon>format_underlined</mat-icon>
-  </mat-button-toggle>
-</mat-button-toggle-group>
-<div>
-  粗體：{{ buttonToggleBold.checked }}、斜體：{{
-    buttonToggleItalic.checked
-  }}、底線：{{ buttonToggleUnderlined.checked }}
-</div>
-
-<br />
-
-<div class="demo-ripple-container" mat-ripple></div>
-<br />
-<br />
-<br />
-<br />
-<br />
-<h2>漣漪效果(mat-ripple)</h2>
-
-
-<div
-  class="demo-ripple-container"
-  mat-ripple
-  [matRippleCentered]="false"
-  [matRippleDisabled]="false"
-  [matRippleUnbounded]="false"
-  [matRippleRadius]="10"
-  [matRippleColor]="'pink'"
-></div>
-
-
-<button mat-raised-button (click)="triggerRipple()">觸發漣漪效果</button>
-<button mat-raised-button (click)="clearRipple()">清除漣漪效果</button>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<mat-vertical-stepper>
-  <mat-step label="個人資訊">
-    <h4>提供個人資訊</h4>
-  </mat-step>
-  <mat-step label="詳細問題">
-    <h4>主要的問題內容</h4>
-  </mat-step>
-  <mat-step label="其他">
-    <h4>其他問題</h4>
-  </mat-step>
-</mat-vertical-stepper>
-
-<mat-vertical-stepper>
-  <mat-step>
-    <ng-template matStepLabel>
-      <u>個人資訊</u>
-    </ng-template>
-    <h4>提供個人資訊</h4>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>
-      <em>詳細問題</em>
-    </ng-template>
-    <h4>主要的問題內容</h4>
-  </mat-step>
-  <mat-step label="其他">
-    <h4>其他問題</h4>
-  </mat-step>
-</mat-vertical-stepper>
-
-<mat-vertical-stepper>
-  <mat-step>
-    <ng-template matStepLabel>
-      <u>個人資訊</u>
-    </ng-template>
-    <h4>提供個人資訊</h4>
-    <button mat-button matStepperNext>前進到「詳細問題」</button>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>
-      <em>詳細問題</em>
-    </ng-template>
-    <h4>主要的問題內容</h4>
-    <button mat-button matStepperPrevious>回到「個人資訊」</button>
-    <button mat-button matStepperNext>前進到「其他」</button>
-  </mat-step>
-  <mat-step label="其他">
-    <h4>其他問題</h4>
-    <button mat-button matStepperPrevious>回到「詳細問題」</button>
-  </mat-step>
-</mat-vertical-stepper>
-
-<button mat-button (click)="isLinear = !isLinear">切換Linear狀態</button>
-<mat-vertical-stepper [linear]="isLinear">
-  <mat-step [stepControl]="basicFormGroup">
-    <form [formGroup]="basicFormGroup">
-      <ng-template matStepLabel>
-        <u>個人資訊</u>
-      </ng-template>
-      <h4>提供個人資訊</h4>
       <mat-form-field>
         <input
-          name="name"
-          matInput
-          placeholder="姓名"
+          type="text"
+          name="nickname"
           formControlName="name"
+          matInput
+          placeholder="暱稱"
           required
         />
       </mat-form-field>
-    </form>
-    <button mat-button matStepperNext>前進到「詳細問題」</button>
-  </mat-step>
-  <mat-step> ... </mat-step>
-  <mat-step label="其他"> ... </mat-step>
-</mat-vertical-stepper>
+    </div>
+    <div>
+      <mat-form-field>
+        <textarea
+          name="intro_self"
+          matInput
+          placeholder="自我介紹"
+          formControlName="intro"
+          required
+          [errorStateMatcher]="earlyErrorStateMacher"
+          cdkTextareaAutosize
+        ></textarea>
+        <mat-hint>簡單介紹一下你的興趣吧！</mat-hint>
+        <mat-error
+          *ngIf="
+            surveyForm.get('basicQuestions').get('intro').hasError('required')
+          "
+          >請記得輸入自我介紹喔！</mat-error
+        >
+        <mat-error
+          *ngIf="
+            surveyForm.get('basicQuestions').get('intro').hasError('minlength')
+          "
+          >至少輸入10個字吧！</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <mat-form-field>
+      <input type="date" name="birthday" matInput placeholder="生日" />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        type="text"
+        name="country"
+        matInput
+        placeholder="國家"
+        formControlName="country"
+        [matAutocomplete]="countries"
+      />
+    </mat-form-field>
+    <mat-autocomplete #countries="matAutocomplete">
+      <mat-option
+        *ngFor="let country of countries$ | async"
+        [value]="country.name"
+      >
+        {{ country.name }}
+      </mat-option>
+    </mat-autocomplete>
+  </div>
+</form>

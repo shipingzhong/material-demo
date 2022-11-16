@@ -13,10 +13,12 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   imports: [], // 先import
   exports: [
+    CommonModule,
     MatButtonModule,
     BrowserAnimationsModule,
     MatIconModule,
@@ -29,6 +31,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatListModule,
+    MatAutocompleteModule,
   ], // 在export
 })
 export class SharedMaterialModule {}

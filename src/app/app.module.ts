@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { AppComponent } from './app.component';
+import { AppComponent, TwStepperIntl } from './app.component';
 import { SharedMaterialModule } from './shared-material/shared-material.module';
 import { HttpClientModule } from '@angular/common/http';
 

@@ -1,44 +1,19 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  FormGroupDirective,
-  NgForm,
-  Validators,
-} from '@angular/forms';
-import { ErrorStateMatcher, MatRipple } from '@angular/material/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatRipple } from '@angular/material/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { MatDrawerToggleResult, MatSidenav } from '@angular/material/sidenav';
-import { MatStepperIntl } from '@angular/material/stepper';
 import { DomSanitizer } from '@angular/platform-browser';
-import { debounceTime, map, Observable } from 'rxjs';
-export class TwStepperIntl extends MatStepperIntl {
-  override optionalLabel = '非必填';
-}
-export class EarlyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(
-    control: FormControl | null,
-    form: FormGroupDirective | NgForm | null
-  ): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && control.dirty);
-  }
-}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [{ provide: MatStepperIntl, useClass: TwStepperIntl }],
 })
 export class AppComponent implements OnInit {
+  isLinear: boolean;
+  basicFormGroup: FormGroup;
   title = 'app';
-
-  isLinear: boolean = true;
-  surveyForm: FormGroup;
-  earlyErrorStateMacher = new EarlyErrorStateMatcher();
-  countries$: Observable<any[]>;
-
   // formatAlignGroup: any;
   // buttonToggleBold: any;
   // buttonToggleItalic: any;
@@ -46,8 +21,7 @@ export class AppComponent implements OnInit {
   @ViewChild(MatRipple) ripple: MatRipple;
   constructor(
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer,
-    private httpClient: HttpClient
+    private domSanitizer: DomSanitizer
   ) {
     this.matIconRegistry.addSvgIconInNamespace(
       'custom-svg',
@@ -67,36 +41,13 @@ export class AppComponent implements OnInit {
 
     this.matIconRegistry.registerFontClassAlias('fontawesome', 'fa');
 
-    this.surveyForm = new FormGroup({
-      basicQuestions: new FormGroup({
-        name: new FormControl('', Validators.required),
-        intro: new FormControl('', [
-          Validators.required,
-          Validators.minLength(10),
-        ]),
-        country: new FormControl(''),
-        majorTech: new FormControl(''),
-      }),
+    this.basicFormGroup = new FormGroup({
+      name: new FormControl('', Validators.required),
     });
   }
 
   ngOnInit() {
     console.log('init');
-    this.surveyForm
-      .get('basicQuestions')
-      .get('country')
-      .valueChanges.pipe(debounceTime(300))
-      .subscribe((inputCountry) => {
-        this.countries$ = this.httpClient
-          .get<any[]>('assets/countries.json')
-          .pipe(
-            map((countries) => {
-              return countries.filter(
-                (country) => country.name.indexOf(inputCountry) >= 0
-              );
-            })
-          );
-      });
   }
   triggerRipple() {
     const point1 = this.ripple.launch(0, 0, {
@@ -122,8 +73,8 @@ export class AppComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    // this.ripple.launch(0, 0);
-    // console.log('ngAfterViewInit');
+    this.ripple.launch(0, 0);
+    console.log('ngAfterViewInit');
   }
 
   toggleSideNav(sideNav: MatSidenav) {
