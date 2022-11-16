@@ -8,6 +8,11 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [], // 先import
@@ -18,8 +23,12 @@ import { MatListModule } from '@angular/material/list';
     MatButtonToggleModule,
     MatRippleModule,
     MatSidenavModule,
-    MatToolbarModule,
-    MatListModule,
+    MatMenuModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
   ], // 在export
 })
 export class SharedMaterialModule {}
