@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatRippleModule } from '@angular/material/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   imports: [], // 先import
@@ -18,6 +19,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatRippleModule,
     MatSidenavModule,
     MatToolbarModule,
+    MatListModule,
   ], // 在export
 })
 export class SharedMaterialModule {}
