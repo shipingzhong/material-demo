@@ -99,16 +99,18 @@
           (dateInput)="logDateInput($event)"
           (dateChange)="logDateChange($event)"
         />
+        <mat-datepicker-toggle
+          [for]="birthdayPicker"
+          matSuffix
+        ></mat-datepicker-toggle>
 
         <mat-datepicker
           #birthdayPicker
           [startAt]="startDate"
           disabled="false"
+          touchUi="true"
         ></mat-datepicker>
       </mat-form-field>
-      <button mat-raised-button (click)="birthdayPicker.opened = true">
-        打開Datepicker
-      </button>
     </div>
   </div>
 

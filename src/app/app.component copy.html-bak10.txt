@@ -95,20 +95,15 @@
           placeholder="生日"
           [matDatepicker]="birthdayPicker"
           formControlName="birthday"
-          [matDatepickerFilter]="familyDayFilter"
-          (dateInput)="logDateInput($event)"
-          (dateChange)="logDateChange($event)"
+          [min]="minDate"
+          [max]="maxDate"
         />
-
-        <mat-datepicker
-          #birthdayPicker
-          [startAt]="startDate"
-          disabled="false"
-        ></mat-datepicker>
+        <mat-datepicker-toggle
+          [for]="birthdayPicker"
+          matSuffix
+        ></mat-datepicker-toggle>
+        <mat-datepicker #birthdayPicker [startAt]="startDate"></mat-datepicker>
       </mat-form-field>
-      <button mat-raised-button (click)="birthdayPicker.opened = true">
-        打開Datepicker
-      </button>
     </div>
   </div>
 

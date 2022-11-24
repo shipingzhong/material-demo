@@ -8,10 +8,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { ErrorStateMatcher, MatRipple } from '@angular/material/core';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { MatIconRegistry } from '@angular/material/icon';
 import { MatDrawerToggleResult, MatSidenav } from '@angular/material/sidenav';
 import { MatStepperIntl } from '@angular/material/stepper';
 import { DomSanitizer } from '@angular/platform-browser';
+import * as moment from 'moment';
 import { debounceTime, map, Observable } from 'rxjs';
 export class TwStepperIntl extends MatStepperIntl {
   override optionalLabel = '非必填';
@@ -38,6 +40,11 @@ export class AppComponent implements OnInit {
   surveyForm: FormGroup;
   earlyErrorStateMacher = new EarlyErrorStateMatcher();
   countries$: Observable<any[]>;
+  majorTechList: any[];
+
+  startDate = moment('1999-1-10');
+  minDate = moment('1999-1-5');
+  maxDate = moment('1999-1-15');
 
   // formatAlignGroup: any;
   // buttonToggleBold: any;
@@ -76,12 +83,14 @@ export class AppComponent implements OnInit {
         ]),
         country: new FormControl(''),
         majorTech: new FormControl(''),
+        birthday: new FormControl({ value: '', disabled: true }),
       }),
     });
   }
 
   ngOnInit() {
     console.log('init');
+    // this.countries$ = this.httpClient.get<any[]>('assets/countries.json');
     this.surveyForm
       .get('basicQuestions')
       .get('country')
@@ -97,6 +106,16 @@ export class AppComponent implements OnInit {
             })
           );
       });
+    this.majorTechList = [
+      {
+        name: '前端',
+        items: ['HTML', 'CSS', 'JavaScript'],
+      },
+      {
+        name: '後端',
+        items: ['C#', 'NodeJs', 'Go'],
+      },
+    ];
   }
   triggerRipple() {
     const point1 = this.ripple.launch(0, 0, {
@@ -139,5 +158,40 @@ export class AppComponent implements OnInit {
 
   closed() {
     console.log('芝麻關門');
+  }
+  highlightFiltered(countryName: string) {
+    const inputCountry = this.surveyForm
+      .get('basicQuestions')
+      .get('country').value;
+    return countryName.replace(
+      inputCountry,
+      `<span class="autocomplete-highlight">${inputCountry}</span>`
+    );
+  }
+
+  displayCountry(country: any) {
+    console.log(country);
+    if (country) {
+      return `${country.name} / ${country.code}`;
+    } else {
+      return '';
+    }
+  }
+
+  familyDayFilter(date: moment.Moment): boolean {
+    if (date != null) {
+      const day = date.day();
+      return day !== 2 && day !== 5;
+    } else {
+      return true;
+    }
+  }
+
+  logDateInput($event: MatDatepickerInputEvent<moment.Moment>) {
+    console.log($event);
+  }
+
+  logDateChange($event: MatDatepickerInputEvent<moment.Moment>) {
+    console.log($event);
   }
 }
