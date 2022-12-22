@@ -45,6 +45,8 @@ export class AppComponent implements OnInit {
   startDate = moment('1999-1-10');
   minDate = moment('1999-1-5');
   maxDate = moment('1999-1-15');
+  interestList: any[];
+  nestInterestList: any[];
 
   // formatAlignGroup: any;
   // buttonToggleBold: any;
@@ -84,6 +86,7 @@ export class AppComponent implements OnInit {
         country: new FormControl(''),
         majorTech: new FormControl(''),
         birthday: new FormControl({ value: '', disabled: true }),
+        interest: new FormControl(null),
       }),
     });
   }
@@ -114,6 +117,56 @@ export class AppComponent implements OnInit {
       {
         name: '後端',
         items: ['C#', 'NodeJs', 'Go'],
+      },
+    ];
+
+    this.interestList = [
+      {
+        id: 1,
+        name: '桌球',
+      },
+      {
+        id: 2,
+        name: '網球',
+      },
+      {
+        id: 3,
+        name: '羽球',
+      },
+    ];
+
+    this.nestInterestList = [
+      {
+        id: 1,
+        name: '球類',
+        subItems: [
+          {
+            id: 11,
+            name: '桌球',
+          },
+          {
+            id: 12,
+            name: '網球',
+          },
+          {
+            id: 13,
+            name: '羽球',
+          },
+        ],
+      },
+      {
+        id: 2,
+        name: '其他',
+        subItems: [
+          {
+            id: 21,
+            name: '游泳',
+          },
+          {
+            id: 22,
+            name: '跑步',
+          },
+        ],
       },
     ];
   }

@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatSelectModule } from '@angular/material/select';
 
 export const TW_FORMATS = {
   parse: {
@@ -54,6 +55,7 @@ export const TW_FORMATS = {
     MatAutocompleteModule,
     MatDatepickerModule,
     MatMomentDateModule,
+    MatSelectModule,
   ], // 在export
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'zh-TW' },
